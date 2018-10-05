@@ -8,7 +8,7 @@ __How to use__:
 1. That's it. :sweat_smile:
 
 __Notes__:
-* Some folders will also contain a main.cpp file showing how the same program can be written in a serial, single-threaded manner.
+* Some folders will also contain a main.cpp file showing how the same program can be written in a serial, single-threaded manner. This is not included in the bazel builds, so build and run it however you like.
 * Not tested on Windows
 
 __Credit__:
