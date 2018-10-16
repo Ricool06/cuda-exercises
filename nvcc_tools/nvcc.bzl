@@ -1,7 +1,7 @@
 def _impl(ctx):
 
     info = ctx.toolchains["//nvcc_tools:toolchain_type"].nvccinfo
-    args = [src.path for src in ctx.files.srcs] + ["-o", ctx.outputs.out.path]
+    args = [src.path for src in ctx.files.srcs] + ["--output-file", ctx.outputs.out.path]
 
     ctx.actions.run(
         inputs = ctx.files.srcs,
@@ -12,11 +12,14 @@ def _impl(ctx):
         use_default_shell_env = True,
     )
 
+    return DefaultInfo(executable = ctx.outputs.out)
+
 nvcc_binary = rule(
     implementation = _impl,
     attrs = {
         "srcs": attr.label_list(allow_files = True),
     },
     toolchains = ["//nvcc_tools:toolchain_type"],
-    outputs = {"out": "%{name}.out"},
+    outputs = {"out": "%{name}.binary"},
+    executable = True,
 )
