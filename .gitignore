@@ -36,3 +36,5 @@ CTestTestfile.cmake
 # Ignore jekyll build output.
 /production
 /.sass-cache
+
+bin/
