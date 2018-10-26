@@ -1,0 +1,4 @@
+build:cuda --action_env=LD_LIBRARY_PATH=/usr/local/cuda/lib64 
+build:cuda --crosstool_top=//toolchain:nvcc
+build:cuda --cpu=nvidia_gpu
+build:cuda --host_crosstool_top=@bazel_tools//tools/cpp:toolchain

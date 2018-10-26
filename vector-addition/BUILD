@@ -1,5 +1,3 @@
-load("//nvcc_tools:nvcc.bzl", "nvcc_binary")
-
 platform(
     name = "linux",
     constraint_values = [
@@ -8,13 +6,13 @@ platform(
     ],
 )
 
-nvcc_binary(
+cc_binary(
     name = "vector-addition",
-    srcs = glob(["src/**/*.cu", "src/**/*.h"]),
+    srcs = glob(["src/**/*.cc", "src/**/*.h"]),
 )
 
-cc_test(
-    name = "vector-addition-tests",
-    srcs = glob(["test/**/*.cc", "test/**/*.h"]),
-    deps = ["@gtest//:gtest"],
-)
+# cc_test(
+#     name = "vector-addition-tests",
+#     srcs = glob(["test/**/*.cc", "test/**/*.h"]),
+#     deps = ["@gtest//:gtest"],
+# )

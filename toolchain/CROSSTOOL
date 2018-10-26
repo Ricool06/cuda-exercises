@@ -1,0 +1,55 @@
+major_version: "1"
+minor_version: "0"
+default_target_cpu: "nvidia_gpu"
+
+default_toolchain {
+  cpu: "nvidia_gpu"
+  toolchain_identifier: "nvidia-gpu-toolchain"
+}
+
+toolchain {
+  toolchain_identifier: "nvidia-gpu-toolchain"
+  host_system_name: "i686-unknown-linux-gnu"
+  target_system_name: "nvidia-gpu-unknown-nvcc"
+  target_cpu: "nvidia_gpu"
+  target_libc: "unknown"
+  compiler: "nvcc"
+  abi_version: "unknown"
+  abi_libc_version: "unknown"
+
+  cxx_builtin_include_directory: "/usr/include"
+  cxx_builtin_include_directory: "/usr/lib/gcc/x86_64-linux-gnu/7/include"
+
+  tool_path {
+      name: "gcc"
+      path: "nvcc-gcc.py"
+  }
+  tool_path {
+      name: "ld"
+      path: "nvcc-ld.py"
+  }
+  tool_path {
+      name: "ar"
+      path: "/bin/false"
+  }
+  tool_path {
+      name: "cpp"
+      path: "/bin/false"
+  }
+  tool_path {
+      name: "gcov"
+      path: "/bin/false"
+  }
+  tool_path {
+      name: "nm"
+      path: "/bin/false"
+  }
+  tool_path {
+      name: "objdump"
+      path: "/bin/false"
+  }
+  tool_path {
+      name: "strip"
+      path: "/bin/false"
+  }
+}
