@@ -18,6 +18,7 @@ class CudaExercisesTest(ConanFile):
         self.cmake = CMake(self)
         self.cmake.configure()
         self.cmake.build()
+        self.cmake.test()
 
     def imports(self):
         self.copy("*.so", "bin", "lib")

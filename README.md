@@ -5,11 +5,10 @@ __Requires__:
 
 __Run tests__:
 ```
-$ cd test_package
+$ cd test
 $ mkdir build && cd build
 $ conan install ..
 $ conan build ..
-$ ./bin/cuda-exercises-tests
 ```
 
 __Notes__:
