@@ -19,7 +19,7 @@ link_directories(test)
 # file every time we create a new source, just glob it.
 # This comes with the caveat that you'll have to rerun
 # the build.
-file(GLOB LIB_SOURCES lib/*.cu lib/*.h)
+file(GLOB LIB_SOURCES lib/*.cu lib/*.cuh)
 add_library(${CMAKE_PROJECT_NAME} ${LIB_SOURCES})
 target_link_libraries(${CMAKE_PROJECT_NAME} ${CONAN_LIBS})
 

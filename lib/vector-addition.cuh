@@ -1,5 +1,3 @@
-#include <stdlib.h>
-
 #ifndef VECTOR_ADDITION
 #define VECTOR_ADDITION
  
