@@ -15,5 +15,7 @@ __Notes__:
 
 __Credit__:
 * Some code from: https://devblogs.nvidia.com/even-easier-introduction-cuda
-* Conan template from: https://github.com/lasote/conan-gtest-example
+* Conan examples from:
+    * https://github.com/lasote/conan-gtest-example
+    * https://github.com/maitesin/tries
 * *Programming Massively Parallel Processors* by David B. Kirk and Wen-mei W. Hwu
