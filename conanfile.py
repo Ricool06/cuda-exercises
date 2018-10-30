@@ -12,15 +12,17 @@ class CudaExercises(ConanFile):
     generators = "cmake"
     exports = "*"
     description = "Some CUDA C++ exercises"
-    requires = ""
+    requires = "gtest/1.8.1@bincrafters/stable"
     options = {"shared": [True, False]}
-    default_options = "shared=False"
+    default_options = {"shared": False, "gtest:shared": True}
 
     def build(self):
         shared = {"BUILD_SHARED_LIBS": self.options.shared}
         cmake = CMake(self)
         cmake.configure(defs=shared)
         cmake.build()
+        cmake.test()
+
 
     def package(self):
         self.copy("*.h", dst="include")

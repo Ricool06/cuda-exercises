@@ -3,9 +3,8 @@ __Requires__:
 * CUDA Toolkit
 * conan (conan.io)
 
-__Run tests__:
+__How to build & run tests__:
 ```
-$ cd test
 $ mkdir build && cd build
 $ conan install ..
 $ conan build ..
