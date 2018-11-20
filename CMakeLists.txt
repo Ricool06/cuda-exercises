@@ -1,7 +1,8 @@
 project(cuda-exercises LANGUAGES CXX CUDA)
 cmake_minimum_required(VERSION 3.10.2)
 
-add_definitions("-std=c++11")
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 11)
 
 # Initialize Conan
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
@@ -29,7 +30,7 @@ target_link_libraries(${CMAKE_PROJECT_NAME} ${CONAN_LIBS})
 # Create test executable
 set(TEST_EXECUTABLE_NAME ${PROJECT_NAME}-tests)
 file(GLOB TEST_SOURCES test/*.cu)
-add_executable(${TEST_EXECUTABLE_NAME} test/vector-addition.cu)
+add_executable(${TEST_EXECUTABLE_NAME} ${TEST_SOURCES})
 # Link necessary directories
 target_link_libraries(${TEST_EXECUTABLE_NAME} ${CONAN_LIBS} ${CMAKE_PROJECT_NAME})
 

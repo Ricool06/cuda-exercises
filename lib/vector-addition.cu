@@ -17,7 +17,7 @@ void addVectors(int *resultVector, std::size_t length, int *vectorOne, int *vect
     checkCudaCall(cudaMemcpy(deviceVectorOne, vectorOne, arraySizeInBytes, cudaMemcpyHostToDevice));
     checkCudaCall(cudaMemcpy(deviceVectorTwo, vectorTwo, arraySizeInBytes, cudaMemcpyHostToDevice));
 
-    std::size_t blockSize = 256;
+    std::size_t blockSize = 1024;
     std::size_t numBlocks = (length + blockSize - 1) / blockSize;
 
     addVectorsKernel<<<numBlocks, blockSize>>>(deviceResultVector, length, deviceVectorOne, deviceVectorTwo);
@@ -26,4 +26,6 @@ void addVectors(int *resultVector, std::size_t length, int *vectorOne, int *vect
     checkCudaCall(cudaFree(deviceVectorTwo));
 
     checkCudaCall(cudaMemcpy(resultVector, deviceResultVector, arraySizeInBytes, cudaMemcpyDeviceToHost));
+
+    checkCudaCall(cudaFree(deviceResultVector));
 };

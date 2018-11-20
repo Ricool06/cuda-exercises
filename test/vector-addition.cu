@@ -8,15 +8,11 @@ TEST(TestCaseName, TestName) {
 }
 
 TEST(VectorAddition, TwoSingleElementArrays) {
-    int *vectorOne, *vectorTwo, *resultVector;
     std::size_t length = 1;
+    int *resultVector = (int*) malloc(length * sizeof(int));
 
-    vectorOne = (int*) malloc(length * sizeof(int));
-    vectorTwo = (int*) malloc(length * sizeof(int));
-    resultVector = (int*) malloc(length * sizeof(int));
-
-    vectorOne[0] = 12;
-    vectorTwo[0] = 24;
+    static int vectorOne[] = { 12 };
+    static int vectorTwo[] = { 24 };
 
     addVectors(resultVector, length, vectorOne, vectorTwo);
 
@@ -25,16 +21,12 @@ TEST(VectorAddition, TwoSingleElementArrays) {
         EXPECT_EQ(resultVector[i], expectedVector[i]);
     }
 
-    free(vectorOne);
-    free(vectorTwo);
     free(resultVector);
 }
 
 TEST(VectorAddition, TwoMultiElementArrays) {
-    int *resultVector;
     std::size_t length = 4;
-
-    resultVector = (int*) malloc(length * sizeof(int));
+    int *resultVector = (int*) malloc(length * sizeof(int));
 
     static int vectorOne[] = { 2, 4, 6, 8 };
     static int vectorTwo[] = { 4, 8, 16, 32 };
@@ -47,6 +39,31 @@ TEST(VectorAddition, TwoMultiElementArrays) {
     }
 
     free(resultVector);
+}
+
+TEST(VectorAddition, TwoVeryLargeArrays) {
+    std::size_t length = 6000000;
+    int *resultVector = (int*) malloc(length * sizeof(int));
+    int *expectedVector = (int*) malloc(length * sizeof(int));
+    int *vectorOne = (int*) malloc(length * sizeof(int));
+    int *vectorTwo = (int*) malloc(length * sizeof(int));
+
+    for (std::size_t i = 0; i < length; i++) {
+        vectorOne[i] = i;
+        vectorTwo[i] = i;
+        expectedVector[i] = 2 * i;
+    }
+
+    addVectors(resultVector, length, vectorOne, vectorTwo);
+
+    for (int i = 0; i < length; i++) {
+        EXPECT_EQ(resultVector[i], expectedVector[i]);
+    }
+
+    free(resultVector);
+    free(expectedVector);
+    free(vectorOne);
+    free(vectorTwo);
 }
 
 int main(int argc, char **argv) {
