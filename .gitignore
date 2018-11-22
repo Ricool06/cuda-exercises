@@ -49,3 +49,6 @@ tmp/
 **/conanbuildinfo.cmake
 **/conanbuildinfo.txt
 **/conaninfo.txt
+
+.idea/
+cmake-build-debug/

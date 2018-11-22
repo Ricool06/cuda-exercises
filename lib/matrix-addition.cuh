@@ -1,15 +1,6 @@
 #ifndef MATRIX_ADDITION
 #define MATRIX_ADDITION
-
-struct Matrix {
-    size_t height;
-    size_t width;
-    int *elements;
-
-    Matrix(size_t height,
-        size_t width,
-        int *elements):height(height), width(width), elements(elements) {}
-};
+#include "matrix-types.cuh"
 
 void addMatrices(Matrix resultMatrix,
     Matrix matrixOne,

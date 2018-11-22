@@ -32,6 +32,9 @@ TEST(MatrixAddition, TwoSingleElementMatrices) {
     Matrix expectedMatrix = Matrix(height, width, expectedMatrixElements);
 
     EXPECT_MATRIX_EQ(resultMatrix, expectedMatrix);
+
+    free(resultMatrixElements);
+    cudaDeviceReset();
 };
 
 TEST(MatrixAddition, TwoSingleDimensionalMatrices) {
@@ -53,6 +56,7 @@ TEST(MatrixAddition, TwoSingleDimensionalMatrices) {
     EXPECT_MATRIX_EQ(resultMatrix, expectedMatrix);
 
     free(resultMatrixElements);
+    cudaDeviceReset();
 }
 
 TEST(MatrixAddition, TwoMultiDimensionalMatrices) {
@@ -74,6 +78,7 @@ TEST(MatrixAddition, TwoMultiDimensionalMatrices) {
     EXPECT_MATRIX_EQ(resultMatrix, expectedMatrix);
 
     free(resultMatrixElements);
+    cudaDeviceReset();
 }
 
 TEST(MatrixAddition, TwoLargeMultiDimensionalMatrices) {
@@ -103,4 +108,5 @@ TEST(MatrixAddition, TwoLargeMultiDimensionalMatrices) {
     free(matrixOneElements);
     free(matrixTwoElements);
     free(expectedMatrixElements);
+    cudaDeviceReset();
 }

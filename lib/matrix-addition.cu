@@ -29,10 +29,9 @@ void addMatrices(Matrix resultMatrix, Matrix matrixOne, Matrix matrixTwo) {
 
     addMatricesKernel<<<numBlocks, blockSize>>>(dResultMatrix, dMatrixOne, dMatrixTwo);
 
-    checkCudaCall(cudaFree(dMatrixOne.elements));
-    checkCudaCall(cudaFree(dMatrixTwo.elements));
-
     checkCudaCall(cudaMemcpy(resultMatrix.elements, dResultMatrix.elements, resultMatrixSizeInBytes, cudaMemcpyDeviceToHost));
 
+    checkCudaCall(cudaFree(dMatrixOne.elements));
+    checkCudaCall(cudaFree(dMatrixTwo.elements));
     checkCudaCall(cudaFree(dResultMatrix.elements));
 }
